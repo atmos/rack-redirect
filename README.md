@@ -22,6 +22,13 @@ testing
 
 Just run rake...
 
+    rack-redirect
+      - redirects from http://example.org to http://www.example.org/
+      - redirects from http://alpha.example.com to http://www.example.org/
+      - redirects from http://example.org/nate to http://www.example.org/nate
+      - redirects from http://example.org/nate?trip_id=42 to http://www.example.org/nate?trip_id=42
+
+
 [sinatra]: http://www.sinatrarb.com
 [everlater]: http://everlater.com
 [solo]: http://engineyard.com/solo
