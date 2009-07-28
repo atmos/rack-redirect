@@ -10,7 +10,7 @@ module EY
           destination << "#{env['PATH_INFO']}"
           destination << "?#{env['QUERY_STRING']}" unless env['QUERY_STRING'].empty?
 
-          [302, {'Location' => destination}, ['See Ya!']] 
+          [301, {'Location' => destination}, ['See Ya!']] 
         end
       end
     end
