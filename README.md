@@ -15,7 +15,13 @@ Installation
 
 Deployment
 ==========
-Check the included config.ru
+Your rackup file should look something like this.
+
+    require 'rubygems'
+    require File.join(File.dirname(__FILE__), 'lib', 'rack-redirect')
+
+    use EY::Solo::Rack::Redirect
+    run lambda { |env| [200, { 'Content-Type' => 'text/plain' }, ['Hello there, gorgeous'] ] }
 
 testing
 =======
