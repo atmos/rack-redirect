@@ -5,10 +5,5 @@ require 'spec'
 require 'rack/test'
 
 Spec::Runner.configure do |config|
-  def app
-    @app ||= Rack::Builder.new do
-      run EY::Solo::Rack::Redirect.new
-    end
-  end
   config.include(Rack::Test::Methods)
 end
