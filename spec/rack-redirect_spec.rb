@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/spec_helper'
 require 'pp'
 
 describe "rack-redirect" do
-  describe "with a value of 'www.'" do
+  describe "with a value of 'www'" do
     def app
       @app ||= Rack::Builder.new do
         use EY::Solo::Rack::Redirect do |app|
