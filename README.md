@@ -28,7 +28,7 @@ testing
 
 Just run rake...
     rack-redirect with a value of 'www'
-      - forwards on from http://www.example.org to http://www.example.org/
+      - forwards on from http://www.example.org to the next app
       - redirects from http://example.org to http://www.example.org/
       - redirects from http://wwww.example.org to http://www.example.org/
       - redirects from http://alpha.example.com to http://www.example.org/
