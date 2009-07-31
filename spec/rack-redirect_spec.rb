@@ -1,17 +1,28 @@
 require File.dirname(__FILE__) + '/spec_helper'
+require 'pp'
 
 describe "rack-redirect" do
   describe "with a value of 'www.'" do
     def app
       @app ||= Rack::Builder.new do
         use EY::Solo::Rack::Redirect do |app|
-          app.prefix = 'www.'
+          app.prefix = 'www'
         end
         run lambda { |env| [200, { 'Content-Type' => 'text/plain' }, ['Hello there, gorgeous'] ] }
       end
     end
+    it 'forwards on from http://www.example.org to http://www.example.org/' do
+      get '/', {}, {'SERVER_NAME' => 'www.example.org'}
+      last_response.body.should eql("Hello there, gorgeous")
+    end
+
     it 'redirects from http://example.org to http://www.example.org/' do
       get '/'
+      last_response['Location'].should eql('http://www.example.org/')
+    end
+
+    it 'redirects from http://wwww.example.org to http://www.example.org/' do
+      get '/', {}, {'SERVER_NAME' => 'wwww.example.org'}
       last_response['Location'].should eql('http://www.example.org/')
     end
 
@@ -38,7 +49,7 @@ describe "rack-redirect" do
       end
     end
     it 'forwards on requests from http://example.org to the next app' do
-      pending
+      get '/', {}, {'SERVER_NAME' => 'example.org'}
       last_response.body.should eql("Hello there, gorgeous")
     end
 

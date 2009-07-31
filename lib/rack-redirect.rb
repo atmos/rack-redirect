@@ -1,5 +1,4 @@
 require 'rack'
-
 module EY
   module Solo
     module Rack

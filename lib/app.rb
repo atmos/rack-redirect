@@ -11,13 +11,18 @@ module EY
 
         def call(env)
           parts = env['SERVER_NAME'].split('.')
-          p1, p2 = parts.pop, parts.pop
+          suffix, chunk, prefix = parts.pop, parts.pop, parts.pop
 
-          destination  = "#{env['rack.url_scheme']}://#{@prefix}#{p2}.#{p1}"
-          destination << "#{env['PATH_INFO']}"
-          destination << "?#{env['QUERY_STRING']}" unless env['QUERY_STRING'].empty?
+          if prefix == @prefix
+            @app.call(env)
+          else
+            prefix = @prefix ? "#{@prefix}." : ''
+            destination  = "#{env['rack.url_scheme']}://#{prefix}#{chunk}.#{suffix}"
+            destination << "#{env['PATH_INFO']}"
+            destination << "?#{env['QUERY_STRING']}" unless env['QUERY_STRING'].empty?
 
-          [301, {'Location' => destination}, ['See Ya!']] 
+            [301, {'Location' => destination}, ['See Ya!']] 
+          end
         end
       end
     end
