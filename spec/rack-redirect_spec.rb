@@ -11,7 +11,7 @@ describe "rack-redirect" do
         run lambda { |env| [200, { 'Content-Type' => 'text/plain' }, ['Hello there, gorgeous'] ] }
       end
     end
-    it 'forwards on from http://www.example.org to http://www.example.org/' do
+    it 'forwards on from http://www.example.org to the next app' do
       get '/', {}, {'SERVER_NAME' => 'www.example.org'}
       last_response.body.should eql("Hello there, gorgeous")
     end
