@@ -5,7 +5,7 @@ describe "rack-redirect" do
   describe "with a value of 'www'" do
     def app
       @app ||= Rack::Builder.new do
-        use EY::Solo::Rack::Redirect do |app|
+        use Rack::EY::Solo::DomainRedirect do |app|
           app.prefix = 'www'
         end
         run lambda { |env| [200, { 'Content-Type' => 'text/plain' }, ['Hello there, gorgeous'] ] }
@@ -44,7 +44,7 @@ describe "rack-redirect" do
   describe "without specifying a prefix" do
     def app
       @app ||= Rack::Builder.new do
-        use EY::Solo::Rack::Redirect
+        use Rack::EY::Solo::DomainRedirect
         run lambda { |env| [200, { 'Content-Type' => 'text/plain' }, ['Hello there, gorgeous'] ] }
       end
     end

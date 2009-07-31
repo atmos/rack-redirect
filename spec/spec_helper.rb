@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] ||= 'test'
 require 'rubygems'
-require File.join(File.dirname(__FILE__), '..', 'lib', 'app')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'rack-redirect')
 require 'spec'
 require 'rack/test'
 
