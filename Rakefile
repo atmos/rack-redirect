@@ -5,7 +5,7 @@ require 'date'
 require 'spec/rake/spectask'
 
 GEM = "rack-redirect"
-GEM_VERSION = "0.0.3"
+GEM_VERSION = "0.0.4"
 AUTHOR = "Corey Donohoe"
 EMAIL = "atmos@atmos.org"
 HOMEPAGE = "http://github.com/atmos/rack-redirect"
